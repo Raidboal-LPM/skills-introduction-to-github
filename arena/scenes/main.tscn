@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="Script" path="res://scripts/arena.gd" id="2_arena"]
+[ext_resource type="Script" path="res://scripts/zone.gd" id="3_zone"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="4_hud"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_small"]
+font_size = 9
+outline_size = 3
+outline_color = Color(0.08, 0.07, 0.1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_big"]
+font_size = 18
+outline_size = 5
+outline_color = Color(0.08, 0.07, 0.1, 1)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="Arena" type="Node2D" parent="."]
+script = ExtResource("2_arena")
+
+[node name="Items" type="Node2D" parent="." groups=["items_root"]]
+
+[node name="Fighters" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Projectiles" type="Node2D" parent="." groups=["fx_root"]]
+
+[node name="Zone" type="Node2D" parent="."]
+script = ExtResource("3_zone")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("4_hud")
+
+[node name="Status" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 4.0
+offset_right = 176.0
+offset_bottom = 18.0
+text = "Vida 100"
+label_settings = SubResource("LabelSettings_small")
+
+[node name="Zone" type="Label" parent="HUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 4.0
+offset_right = 80.0
+offset_bottom = 18.0
+grow_horizontal = 2
+text = "Zona"
+label_settings = SubResource("LabelSettings_small")
+horizontal_alignment = 1
+
+[node name="Alive" type="Label" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -116.0
+offset_top = 4.0
+offset_right = -16.0
+offset_bottom = 18.0
+grow_horizontal = 0
+text = "Vivos: 4"
+label_settings = SubResource("LabelSettings_small")
+horizontal_alignment = 2
+
+[node name="Message" type="Label" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -30.0
+offset_right = 180.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_big")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hint" type="Label" parent="HUD"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -12.0
+offset_right = 200.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+modulate = Color(1, 1, 1, 0.7)
+text = "WASD mover   Mouse mirar   Clique/Espaço atacar   E pegar/trocar   R reiniciar"
+label_settings = SubResource("LabelSettings_small")
+horizontal_alignment = 1

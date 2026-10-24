@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/fighter.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/lutador_amarelo.png" id="2_body"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_body"]
+radius = 5.0
+height = 16.0
+
+[node name="Fighter" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_script")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("2_body")
+
+[node name="Hand" type="Node2D" parent="."]
+position = Vector2(0, 2)
+
+[node name="WeaponSprite" type="Sprite2D" parent="Hand"]
+position = Vector2(6, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_body")
